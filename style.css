@@ -1,0 +1,176 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow: hidden;
+    width: 100vw;
+    background-image: url("assets/background.png");
+    background-size: 100vw;
+    background-repeat: no-repeat;
+    aspect-ratio: 16/9;
+}
+
+#score {
+    position: fixed;
+    top: 3vh;
+    left: 2vw;
+    background-color: white;
+    padding: 2vh;
+    border-radius: 2vw;
+    color: black;
+    font-size: 2vw;
+    font-weight: 100;
+    letter-spacing: 0.2vw;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+
+
+
+
+#truck {
+    position: relative;
+    top: 10vh;
+    width: 75vw;
+    aspect-ratio: 10/6;
+    z-index: 10;
+}
+#truckimage {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-image: url("assets/truck.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    z-index: 10;
+}
+#truck #truckbackground {
+    position: absolute;
+    top: 10%;
+    left: 43.3%;
+    width: 44%;
+    aspect-ratio: 10/9;
+    background-image: url("assets/truckbackground.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    z-index: 5;
+}
+@keyframes truckGoOff {
+    from {
+        left: 0%;
+    }
+    to {
+        left: -150%;
+    }
+}
+@keyframes truckGoIn {
+    from {
+        left: 150%;
+    }
+    to {
+        left: 0%;
+    }
+}
+
+
+
+
+
+#truck #boxgrid {
+    display: grid;
+    grid-template-columns: 13% 13% 13% 13% 13% 13% 13%;
+    grid-template-rows: 25% 25% 25% 25%;
+    position: absolute;
+    top: 28.3%;
+    left: 45.7%;
+    width: 43%;
+    aspect-ratio: 10/5;
+    z-index: 15;
+}
+
+#truck #boxgrid .box.selectMode {
+    border: 3px solid white;
+    margin: 2px;
+}
+#truck #boxgrid .box.selectMode:hover {
+    scale: 1.1;
+}
+
+#truck #boxgrid .box img {
+    position: relative;
+    width: 100%;
+}
+
+#truck #boxgrid .box.mediumbox2 img {
+    width: 200%;
+}
+#truck #boxgrid .box.largebox img {
+    width: 200%;
+}
+
+
+
+
+
+#treadmill {
+    position: fixed;
+    top: 10%;
+    right: 0%;
+    width: 20vw;
+    aspect-ratio: 1/2;
+    border-left: #e4bf48 dashed 5px;
+    background-image: url("assets/treadmill.png");
+    background-size: 100%;
+    background-repeat: repeat-y;
+    z-index: 15;
+}
+#treadmill.started {
+    animation: treadmill 2.5s infinite linear;
+}
+
+#treadmill #top, #treadmill #bottom {
+    position: absolute;
+    top: -25%;
+    left: -10%;
+    width: 120%;
+    height: 25%;
+    background-color: #a08d50;
+    z-index: 10;
+}
+#treadmill #bottom {
+    top: auto;
+    bottom: -25%;
+}
+#treadmill .treadmill-box {
+    position: absolute;
+    top: 0%;
+    animation: treadmill-box-animation 10s linear forwards;
+}
+
+@keyframes treadmill {
+    from {
+        background-position-y: 0%;
+    }
+    to {
+        background-position-y: 100%;
+    }
+}
+@keyframes treadmill-box-animation {
+    from {
+        top: -50%;
+    }
+    to {
+        top: 150%;
+    }
+}
+
+#selectedBoxDisplayCursor {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 70px;
+    z-index: 1000;
+}
