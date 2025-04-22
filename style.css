@@ -149,6 +149,10 @@ body {
     top: 0%;
     animation: treadmill-box-animation 10s linear forwards;
 }
+#treadmill .treadmill-box:hover {
+    scale: 1.05;
+    outline: 3px solid white;
+}
 
 @keyframes treadmill {
     from {

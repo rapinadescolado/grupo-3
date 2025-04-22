@@ -23,12 +23,12 @@ function checkIfGameStarted() {
 
         treadmill.classList.add("started");
         let treadmillBoxGeneration = setInterval(() => {
-            let box = document.createElement("div");
+            let box = document.createElement("img");
 
             let possibilities = ["smallbox","smallbox","mediumbox1","largebox"]
             let boxtype = possibilities[Math.floor(Math.random() * 4)]
 
-            box.innerHTML = `<img src="assets/${boxtype}.png">`;
+            box.src = `assets/${boxtype}.png`;
             box.classList = "treadmill-box";
             box.style.left = `${Math.floor(Math.random() * 50 + 5)}%`;
             box.style.zIndex = 5;
@@ -150,12 +150,16 @@ function testIfSlotIsFree(slot) {
 }
 function nextTruck() {
     score++;
-    document.getElementById("score").innerText = `PONTUAÇÃO: ${score}`
     truck.style.animation = "truckGoOff 2s ease-in forwards";
     setTimeout(() => {
         truck.style.left = "300%;"
         truck.style.animation = "truckGoIn 2s ease-out forwards";
         boxGridSlots.forEach(slot => {
+            if (slot.classList.contains("mediumbox1") || slot.classList.contains("mediumbox2")) {
+                score += 1
+            } else if (slot.classList.contains("largebox")) {
+                score += 2
+            }
             slot.classList.remove("smallbox");
             slot.classList.remove("mediumbox1");
             slot.classList.remove("mediumbox2");
@@ -167,6 +171,7 @@ function nextTruck() {
                     slot.classList.add("selectMode");
                 })
             }
+            document.getElementById("score").innerText = `PONTUAÇÃO: ${score}`;
         })
     }, 1500);
 }
